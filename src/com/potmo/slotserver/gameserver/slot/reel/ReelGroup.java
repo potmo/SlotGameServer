@@ -1,8 +1,6 @@
 package com.potmo.slotserver.gameserver.slot.reel;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 import com.potmo.slotserver.gameserver.random.IRandomNumberGenerator;

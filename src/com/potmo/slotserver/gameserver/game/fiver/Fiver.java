@@ -3,9 +3,8 @@ package com.potmo.slotserver.gameserver.game.fiver;
 import java.math.BigInteger;
 import java.util.LinkedList;
 
-import com.potmo.slotserver.gameserver.communication.wager.IWagerResponse;
+import com.potmo.slotserver.gameserver.communication.wager.FreespinWagerResponse;
 import com.potmo.slotserver.gameserver.communication.wager.WagerRequest;
-import com.potmo.slotserver.gameserver.slot.communication.FreespinWagerResponse;
 import com.potmo.slotserver.gameserver.slot.spin.freespin.FreeSpin;
 import com.potmo.slotserver.gameserver.slot.spin.freespin.FreeSpinner;
 
@@ -18,7 +17,7 @@ public class Fiver
 		this.spinner = spinner;
 	}
 
-	public IWagerResponse wager( WagerRequest request )
+	public FreespinWagerResponse wager( WagerRequest request )
 	{
 
 		LinkedList<FreeSpin<FiverReelSymbol>> spins = spinner.spin( request.betLines );

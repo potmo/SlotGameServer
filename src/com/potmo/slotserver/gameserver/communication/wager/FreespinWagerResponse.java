@@ -1,4 +1,4 @@
-package com.potmo.slotserver.gameserver.slot.communication;
+package com.potmo.slotserver.gameserver.communication.wager;
 
 import java.math.BigInteger;
 import java.util.LinkedList;
@@ -6,11 +6,10 @@ import java.util.LinkedList;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.potmo.slotserver.gameserver.communication.wager.IWagerResponse;
 import com.potmo.slotserver.gameserver.game.fiver.FiverReelSymbol;
 import com.potmo.slotserver.gameserver.slot.spin.freespin.FreeSpin;
 
-public class FreespinWagerResponse implements IWagerResponse
+public class FreespinWagerResponse
 {
 
 	@JsonProperty("totalwin")
@@ -30,7 +29,6 @@ public class FreespinWagerResponse implements IWagerResponse
 		this.spins = spins;
 	}
 
-	@Override
 	@JsonIgnore
 	public BigInteger getTotalWin()
 	{
@@ -38,7 +36,6 @@ public class FreespinWagerResponse implements IWagerResponse
 	}
 
 	@JsonIgnore
-	@Override
 	public BigInteger getTotalCost()
 	{
 		return this.totalCost;

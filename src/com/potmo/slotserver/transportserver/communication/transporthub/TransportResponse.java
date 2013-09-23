@@ -1,17 +1,18 @@
-package com.potmo.slotserver.transportserver.communication.transport;
+package com.potmo.slotserver.transportserver.communication.transporthub;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class TransportRequest
+public class TransportResponse
 {
 
 	@JsonProperty("payload")
 	public final String payload;
 
 	@JsonCreator
-	public TransportRequest(@JsonProperty("payload") String payload)
+	public TransportResponse(@JsonProperty("payload") String payload)
 	{
 		this.payload = payload;
 	}
+
 }

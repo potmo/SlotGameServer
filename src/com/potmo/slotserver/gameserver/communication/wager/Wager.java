@@ -19,7 +19,7 @@ public class Wager
 
 	@Path("fiver")
 	@POST
-	public IWagerResponse doWager( @Context ContainerRequestContext context, WagerRequest request )
+	public FreespinWagerResponse doWager( @Context ContainerRequestContext context, WagerRequest request )
 	{
 
 		FiverFactory fiverFactory = new FiverFactory();
