@@ -3,10 +3,10 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.potmo.slotserver</groupId>
-	<artifactId>slotgameserver</artifactId>
+	<artifactId>trasnportserver</artifactId>
 
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Slot Game Server</name>
+	<name>Transport server</name>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 
@@ -73,7 +73,7 @@
 			<artifactId>jackson-jaxrs-json-provider</artifactId>
 			<version>2.2.3</version>
 		</dependency>
-		
+
 		<!-- GUAVA -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -97,7 +97,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- jersey and grizzly containers -->
+		<!-- JERSEY and GRIZZLY containers -->
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-grizzly2-http</artifactId>
@@ -106,11 +106,13 @@
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-client</artifactId>
 		</dependency>
-<!--
+
+		<!-- KVT STORE -->
 		<dependency>
-			<groupId>org.glassfish.jersey.media</groupId>
-			<artifactId>jersey-media-json-jackson</artifactId>
+			<groupId>se.gawell.ktvstore</groupId>
+			<artifactId>kvtstore-core</artifactId>
+			<version>0.0.5</version>
 		</dependency>
-		-->
+
 	</dependencies>
 </project>

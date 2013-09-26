@@ -7,6 +7,9 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
+import com.potmo.slotserver.transportserver.config.ServerConfigurationBinder;
+import com.potmo.slotserver.transportserver.persistence.config.PersistenceConfigurationBinder;
+
 /**
  * Main class.
  * 
@@ -28,6 +31,10 @@ public class TransportHubServer
 		// in com.potmo.slotserver package
 		final ResourceConfig rc = new ResourceConfig().packages( "com.potmo.slotserver.transportserver" );
 
+		// register server configuration
+		rc.register( new ServerConfigurationBinder() );
+		rc.register( new PersistenceConfigurationBinder() );
+
 		// create and start a new instance of grizzly http server
 		// exposing the Jersey application at BASE_URI
 		return GrizzlyHttpServerFactory.createHttpServer( URI.create( BASE_URI ), rc );
@@ -41,6 +48,7 @@ public class TransportHubServer
 	 */
 	public static void main( String[] args ) throws IOException
 	{
+
 		final HttpServer server = startServer();
 		System.out.println( String.format( "Jersey app started with WADL available at " + "%sapplication.wadl\nHit enter to stop it...", BASE_URI ) );
 		System.in.read();
