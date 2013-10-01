@@ -1,4 +1,4 @@
-package com.potmo.slotserver.transactionserver.communication;
+package com.potmo.slotserver.transactionserver.communication.performtransaction;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

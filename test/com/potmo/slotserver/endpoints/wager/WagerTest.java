@@ -21,8 +21,8 @@ import com.potmo.slotserver.gameserver.communication.wager.WagerRequest;
 import com.potmo.slotserver.persistenceserver.PersistenceServer;
 import com.potmo.slotserver.transactionserver.TransactionServer;
 import com.potmo.slotserver.transportserver.TransportHubServer;
-import com.potmo.slotserver.transportserver.communication.transporthub.TransportRequest;
-import com.potmo.slotserver.transportserver.communication.transporthub.TransportResponse;
+import com.potmo.slotserver.transportserver.communication.transport.TransportRequest;
+import com.potmo.slotserver.transportserver.communication.transport.TransportResponse;
 
 public class WagerTest
 {

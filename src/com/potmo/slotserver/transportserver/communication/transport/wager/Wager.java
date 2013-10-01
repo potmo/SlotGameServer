@@ -1,4 +1,4 @@
-package com.potmo.slotserver.transportserver.communication.transporthub.wager;
+package com.potmo.slotserver.transportserver.communication.transport.wager;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -23,10 +23,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.potmo.slotserver.configuration.ServerConfiguration;
 import com.potmo.slotserver.persistenceserver.communication.savewager.PersistWagerRequest;
 import com.potmo.slotserver.persistenceserver.communication.savewager.PersistWagerResponse;
-import com.potmo.slotserver.transactionserver.communication.TransactionRequest;
-import com.potmo.slotserver.transactionserver.communication.TransactionResponse;
-import com.potmo.slotserver.transportserver.communication.transporthub.TransportRequest;
-import com.potmo.slotserver.transportserver.communication.transporthub.TransportResponse;
+import com.potmo.slotserver.transactionserver.communication.performtransaction.TransactionRequest;
+import com.potmo.slotserver.transactionserver.communication.performtransaction.TransactionResponse;
+import com.potmo.slotserver.transportserver.communication.transport.TransportRequest;
+import com.potmo.slotserver.transportserver.communication.transport.TransportResponse;
 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)

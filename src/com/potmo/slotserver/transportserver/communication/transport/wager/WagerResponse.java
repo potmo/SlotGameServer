@@ -1,4 +1,4 @@
-package com.potmo.slotserver.transportserver.communication.transporthub.wager;
+package com.potmo.slotserver.transportserver.communication.transport.wager;
 
 import java.math.BigInteger;
 

@@ -1,4 +1,4 @@
-package com.potmo.slotserver.transactionserver.communication;
+package com.potmo.slotserver.transactionserver.communication.performtransaction;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
