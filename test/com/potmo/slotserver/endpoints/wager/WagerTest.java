@@ -18,6 +18,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.potmo.slotserver.gameserver.GameServer;
 import com.potmo.slotserver.gameserver.communication.wager.FreespinWagerResponse;
 import com.potmo.slotserver.gameserver.communication.wager.WagerRequest;
+import com.potmo.slotserver.persistenceserver.PersistenceServer;
+import com.potmo.slotserver.transactionserver.TransactionServer;
 import com.potmo.slotserver.transportserver.TransportHubServer;
 import com.potmo.slotserver.transportserver.communication.transporthub.TransportRequest;
 import com.potmo.slotserver.transportserver.communication.transporthub.TransportResponse;
@@ -30,6 +32,8 @@ public class WagerTest
 	//private WebTarget gameTarget;
 	private WebTarget transportTarget;
 	private ObjectMapper jsonObjectMapper;
+	private HttpServer transactionServer;
+	private HttpServer persistanceServer;
 
 	@Before
 	public void setUp() throws Exception
@@ -37,10 +41,8 @@ public class WagerTest
 		// start the server
 		gameServer = GameServer.startServer();
 		transportServer = TransportHubServer.startServer();
-
-		// create the client
-		//		Client gameClient = ClientBuilder.newBuilder().build();
-		//		gameTarget = gameClient.target( GameServer.BASE_URI );
+		transactionServer = TransactionServer.startServer();
+		persistanceServer = PersistenceServer.startServer();
 
 		Client transportClient = ClientBuilder.newBuilder().build();
 		transportTarget = transportClient.target( TransportHubServer.BASE_URI );
@@ -54,22 +56,9 @@ public class WagerTest
 	{
 		gameServer.stop();
 		transportServer.stop();
+		transactionServer.stop();
+		persistanceServer.stop();
 	}
-
-	/*
-	 * @Test
-	 * public void testGameServer()
-	 * {
-	 * 
-	 * WagerRequest request = new WagerRequest( new BigInteger( "30" ), new
-	 * BigInteger( "10" ) );
-	 * FreespinWagerResponse response = gameTarget.path( "wager" ).path( "fiver"
-	 * ).request().accept( MediaType.APPLICATION_JSON_TYPE ).post(
-	 * Entity.entity( request, MediaType.APPLICATION_JSON ),
-	 * FreespinWagerResponse.class );
-	 * 
-	 * }
-	 */
 
 	@Test
 	public void testTransportServer() throws IOException
@@ -78,7 +67,11 @@ public class WagerTest
 		String wagerRequestJson = jsonObjectMapper.writeValueAsString( wagerRequest );
 		TransportRequest transportRequest = new TransportRequest( "testpartner", "fiver", "testaccount", "testticket", wagerRequestJson );
 
-		TransportResponse transportResponse = transportTarget.path( "wager" ).request().accept( MediaType.APPLICATION_JSON ).post( Entity.json( transportRequest ), TransportResponse.class );
+		TransportResponse transportResponse = null;
+		for ( int i = 0; i < 1; i++ )
+		{
+			transportResponse = transportTarget.path( "wager" ).request().accept( MediaType.APPLICATION_JSON ).post( Entity.json( transportRequest ), TransportResponse.class );
+		}
 
 		FreespinWagerResponse wagerResponse = jsonObjectMapper.readValue( transportResponse.payload, FreespinWagerResponse.class );
 

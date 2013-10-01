@@ -1,4 +1,4 @@
-package com.potmo.slotserver.transportserver;
+package com.potmo.slotserver.persistenceserver;
 
 import java.io.IOException;
 import java.net.URI;
@@ -13,10 +13,10 @@ import com.potmo.slotserver.configuration.ServerConfigurationBinder;
  * Main class.
  * 
  */
-public class TransportHubServer
+public class PersistenceServer
 {
 	// Base URI the Grizzly HTTP server will listen on
-	public static final String BASE_URI = "http://localhost:8081/";
+	public static final String BASE_URI = "http://localhost:8082/";
 
 	/**
 	 * Starts Grizzly HTTP server exposing JAX-RS resources defined in this
@@ -28,7 +28,7 @@ public class TransportHubServer
 	{
 		// create a resource config that scans for JAX-RS resources and providers
 		// in com.potmo.slotserver package
-		final ResourceConfig rc = new ResourceConfig().packages( "com.potmo.slotserver.transportserver" );
+		final ResourceConfig rc = new ResourceConfig().packages( "com.potmo.slotserver.persistenceserver" );
 
 		// register server configuration
 		rc.register( new ServerConfigurationBinder() );

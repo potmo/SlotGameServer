@@ -1,4 +1,4 @@
-package com.potmo.slotserver.transportserver.config;
+package com.potmo.slotserver.configuration;
 
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 
@@ -9,7 +9,7 @@ public class ServerConfigurationBinder extends AbstractBinder
 	protected void configure()
 	{
 		//TODO: Load what config to use from disc
-		bind( DevConfiguration.class ).to( ServerConfiguration.class );
+		bind( LocalConfiguration.class ).to( ServerConfiguration.class );
 	}
 
 }
