@@ -34,4 +34,10 @@ public class LocalConfiguration implements ServerConfiguration
 		return TransactionServer.BASE_URI;
 	}
 
+	@Override
+	public String getRiakServerUri()
+	{
+		return "http://127.0.0.1:8098/riak";
+	}
+
 }

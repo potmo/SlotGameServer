@@ -107,6 +107,13 @@
 			<artifactId>jersey-client</artifactId>
 		</dependency>
 
+		<!-- RIAK -->
+		<dependency>
+			<groupId>com.basho.riak</groupId>
+			<artifactId>riak-client</artifactId>
+			<version>1.4.1</version>
+		</dependency>
+
 		<!-- KVT STORE -->
 		<!-- <dependency> <groupId>se.gawell.ktvstore</groupId> <artifactId>kvtstore-core</artifactId> 
 			<version>0.0.13</version> </dependency> -->

@@ -1,4 +1,4 @@
-package com.potmo.slotserver.persistenceserver.communication.savewager;
+package com.potmo.slotserver.persistenceserver.communication.persistwager;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

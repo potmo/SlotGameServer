@@ -10,5 +10,6 @@ public interface ServerConfiguration
 	public String getGameServerBaseUri();
 	public String getPersistanceServerBaseUri();
 	public String getTransactionServerBaseUri();
+	public String getRiakServerUri();
 
 }
