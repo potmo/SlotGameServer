@@ -2,6 +2,7 @@ package com.potmo.slotserver.configuration;
 
 import org.jvnet.hk2.annotations.Service;
 
+import com.potmo.slotserver.campaignserver.CampaignServer;
 import com.potmo.slotserver.gameserver.GameServer;
 import com.potmo.slotserver.persistenceserver.PersistenceServer;
 import com.potmo.slotserver.transactionserver.TransactionServer;
@@ -32,6 +33,12 @@ public class LocalConfiguration implements ServerConfiguration
 	public String getTransactionServerBaseUri()
 	{
 		return TransactionServer.BASE_URI;
+	}
+
+	@Override
+	public String getCampaignServerBaseUri()
+	{
+		return CampaignServer.BASE_URI;
 	}
 
 	@Override

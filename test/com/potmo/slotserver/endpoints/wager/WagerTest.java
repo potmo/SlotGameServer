@@ -15,6 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.potmo.slotserver.campaignserver.CampaignServer;
 import com.potmo.slotserver.gameserver.GameServer;
 import com.potmo.slotserver.gameserver.communication.wager.FreespinWagerResponse;
 import com.potmo.slotserver.gameserver.communication.wager.WagerRequest;
@@ -34,6 +35,7 @@ public class WagerTest
 	private ObjectMapper jsonObjectMapper;
 	private HttpServer transactionServer;
 	private HttpServer persistanceServer;
+	private HttpServer campaignServer;
 
 	@Before
 	public void setUp() throws Exception
@@ -43,6 +45,7 @@ public class WagerTest
 		transportServer = TransportHubServer.startServer();
 		transactionServer = TransactionServer.startServer();
 		persistanceServer = PersistenceServer.startServer();
+		campaignServer = CampaignServer.startServer();
 
 		Client transportClient = ClientBuilder.newBuilder().build();
 		transportTarget = transportClient.target( TransportHubServer.BASE_URI );
@@ -58,6 +61,7 @@ public class WagerTest
 		transportServer.stop();
 		transactionServer.stop();
 		persistanceServer.stop();
+		campaignServer.stop();
 	}
 
 	@Test
@@ -65,7 +69,7 @@ public class WagerTest
 	{
 		WagerRequest wagerRequest = new WagerRequest( new BigInteger( "30" ), new BigInteger( "10" ) );
 		String wagerRequestJson = jsonObjectMapper.writeValueAsString( wagerRequest );
-		TransportRequest transportRequest = new TransportRequest( "testpartner", "fiver", "testaccount", "testticket", wagerRequestJson );
+		TransportRequest transportRequest = new TransportRequest( "testpartner", "fiver", "testaccount", "testticket", "EUR", wagerRequestJson, new String[] {} );
 
 		TransportResponse transportResponse = null;
 		for ( int i = 0; i < 1; i++ )

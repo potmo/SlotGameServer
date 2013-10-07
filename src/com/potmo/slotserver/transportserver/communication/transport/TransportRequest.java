@@ -12,11 +12,17 @@ public class TransportRequest
 	@JsonProperty("game")
 	public final String game;
 
+	@JsonProperty("account")
+	public final String account;
+
 	@JsonProperty("ticket")
 	public final String ticket;
 
-	@JsonProperty("account")
-	public final String account;
+	@JsonProperty("currency")
+	public final String currency;
+
+	@JsonProperty("campaigns")
+	public final String[] campaigns;
 
 	@JsonProperty("payload")
 	public final String payload;
@@ -27,12 +33,16 @@ public class TransportRequest
 							@JsonProperty("game") String game,
 							@JsonProperty("account") String account,
 							@JsonProperty("ticket") String ticket,
-							@JsonProperty("payload") String payload)
+							@JsonProperty("currency") String currency,
+							@JsonProperty("payload") String payload,
+							@JsonProperty("campaigns") String[] campaigns)
 	{
 		this.partner = partner;
 		this.game = game;
 		this.account = account;
 		this.ticket = ticket;
+		this.currency = currency;
 		this.payload = payload;
+		this.campaigns = campaigns;
 	}
 }

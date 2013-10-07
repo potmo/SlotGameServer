@@ -46,6 +46,7 @@ public class RIAKStorage implements Storage
 	public void storeWager( String partner, String game, String gameSession, String wagerId, String payload )
 	{
 
+		//TODO: Handle this logging error in a better way? How?
 		try
 		{
 			storeInRiak( partner, game, gameSession, wagerId, payload );

@@ -2,6 +2,7 @@ package com.potmo.slotserver.transportserver.communication.transport.wager;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -50,8 +51,10 @@ public class Wager
 		WagerResponse wagerResponse = mapResponseToWagerResponse( response );
 
 		// perform transaction
-		TransactionResponse transactionResponse = performTransaction( request.partner, request.game, request.account, request.ticket, wagerResponse.totalCost, wagerResponse.totalWin );
+		// TODO: Should the currency be passed along here?
+		TransactionResponse transactionResponse = performTransaction( request.partner, request.game, request.account, request.ticket, wagerResponse.totalCost, wagerResponse.totalWin, request.currency, request.campaigns );
 
+		//TODO: add the old balance and the new balance to the persistanced object
 		persistWager( transactionResponse.gameSessionId, transactionResponse.wagerId, request.game, request.partner, response );
 
 		System.out.println( "I will take: " + wagerResponse.totalCost + " and return " + wagerResponse.totalWin + " in gamesession " + transactionResponse.gameSessionId + ":" + transactionResponse.wagerId );
@@ -71,12 +74,15 @@ public class Wager
 		return response;
 	}
 
-	private TransactionResponse performTransaction( String partner, String game, String account, String ticket, BigInteger totalCost, BigInteger totalWin )
+	private TransactionResponse performTransaction( String partner, String game, String account, String ticket, BigInteger totalCost, BigInteger totalWin, String currency, String[] campaigns )
 	{
+
+		// TODO: We need a currency here to be able to transfer money
+
 		Client client = ClientBuilder.newBuilder().build();
 		WebTarget target = client.target( serverConfig.getTransactionServerBaseUri() );
 
-		TransactionRequest request = new TransactionRequest( partner, game, totalCost, totalWin, account, ticket );
+		TransactionRequest request = new TransactionRequest( partner, game, account, ticket, currency, totalCost, totalWin, campaigns );
 		TransactionResponse response = target.path( "performtransaction" ).request().accept( MediaType.APPLICATION_JSON ).post( Entity.json( request ), TransactionResponse.class );
 		System.out.println( "transacted" );
 		return response;
@@ -84,6 +90,8 @@ public class Wager
 
 	private WagerResponse mapResponseToWagerResponse( String response ) throws IOException, JsonParseException, JsonMappingException
 	{
+		// TODO: Marshall
+		// TODO: No need to create a new object mapper all the time
 		ObjectMapper objectMapper = new ObjectMapper();
 		WagerResponse wagerResponse = objectMapper.readValue( response, WagerResponse.class );
 		return wagerResponse;
@@ -91,6 +99,8 @@ public class Wager
 
 	private String sendWagerToGame( TransportRequest request ) throws IOException, JsonParseException, JsonMappingException
 	{
+		//TODO: Marshall the request somehow
+
 		// set up a client to be able to relay the message
 		Client client = ClientBuilder.newBuilder().build();
 		WebTarget target = client.target( serverConfig.getGameServerBaseUri() );

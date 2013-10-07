@@ -7,9 +7,15 @@ public interface ServerConfiguration
 {
 
 	public String getTransportServerBaseUri();
+
 	public String getGameServerBaseUri();
+
 	public String getPersistanceServerBaseUri();
+
 	public String getTransactionServerBaseUri();
+
+	public String getCampaignServerBaseUri();
+
 	public String getRiakServerUri();
 
 }
