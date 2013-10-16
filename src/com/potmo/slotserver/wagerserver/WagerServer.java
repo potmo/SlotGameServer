@@ -1,4 +1,4 @@
-package com.potmo.slotserver.transportserver;
+package com.potmo.slotserver.wagerserver;
 
 import java.io.IOException;
 import java.net.URI;
@@ -13,7 +13,7 @@ import com.potmo.slotserver.configuration.ServerConfigurationBinder;
  * Main class.
  * 
  */
-public class TransportHubServer
+public class WagerServer
 {
 	// Base URI the Grizzly HTTP server will listen on
 	public static final String BASE_URI = "http://localhost:8081/";
@@ -28,7 +28,7 @@ public class TransportHubServer
 	{
 		// create a resource config that scans for JAX-RS resources and providers
 		// in com.potmo.slotserver package
-		final ResourceConfig rc = new ResourceConfig().packages( "com.potmo.slotserver.transportserver" );
+		final ResourceConfig rc = new ResourceConfig().packages( "com.potmo.slotserver.wagerserver" );
 
 		// register server configuration
 		rc.register( new ServerConfigurationBinder() );

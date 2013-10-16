@@ -6,7 +6,7 @@ import com.potmo.slotserver.campaignserver.CampaignServer;
 import com.potmo.slotserver.gameserver.GameServer;
 import com.potmo.slotserver.persistenceserver.PersistenceServer;
 import com.potmo.slotserver.transactionserver.TransactionServer;
-import com.potmo.slotserver.transportserver.TransportHubServer;
+import com.potmo.slotserver.wagerserver.WagerServer;
 
 @Service
 public class LocalConfiguration implements ServerConfiguration
@@ -20,7 +20,7 @@ public class LocalConfiguration implements ServerConfiguration
 	@Override
 	public String getTransportServerBaseUri()
 	{
-		return TransportHubServer.BASE_URI;
+		return WagerServer.BASE_URI;
 	}
 
 	@Override

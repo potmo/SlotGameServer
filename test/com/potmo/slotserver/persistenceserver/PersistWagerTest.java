@@ -15,8 +15,8 @@ import org.junit.Test;
 
 import com.potmo.slotserver.persistenceserver.communication.persistwager.PersistWagerRequest;
 import com.potmo.slotserver.persistenceserver.communication.persistwager.PersistWagerResponse;
-import com.potmo.slotserver.transportserver.TransportHubServer;
-import com.potmo.slotserver.transportserver.communication.transport.TransportResponse;
+import com.potmo.slotserver.wagerserver.WagerServer;
+import com.potmo.slotserver.wagerserver.communication.wager.TransportResponse;
 
 public class PersistWagerTest
 {

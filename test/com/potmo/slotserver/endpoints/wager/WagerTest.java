@@ -21,9 +21,9 @@ import com.potmo.slotserver.gameserver.communication.wager.FreespinWagerResponse
 import com.potmo.slotserver.gameserver.communication.wager.WagerRequest;
 import com.potmo.slotserver.persistenceserver.PersistenceServer;
 import com.potmo.slotserver.transactionserver.TransactionServer;
-import com.potmo.slotserver.transportserver.TransportHubServer;
-import com.potmo.slotserver.transportserver.communication.transport.TransportRequest;
-import com.potmo.slotserver.transportserver.communication.transport.TransportResponse;
+import com.potmo.slotserver.wagerserver.WagerServer;
+import com.potmo.slotserver.wagerserver.communication.wager.Credentials;
+import com.potmo.slotserver.wagerserver.communication.wager.TransportResponse;
 
 public class WagerTest
 {
@@ -42,13 +42,13 @@ public class WagerTest
 	{
 		// start the server
 		gameServer = GameServer.startServer();
-		transportServer = TransportHubServer.startServer();
+		transportServer = WagerServer.startServer();
 		transactionServer = TransactionServer.startServer();
 		persistanceServer = PersistenceServer.startServer();
 		campaignServer = CampaignServer.startServer();
 
 		Client transportClient = ClientBuilder.newBuilder().build();
-		transportTarget = transportClient.target( TransportHubServer.BASE_URI );
+		transportTarget = transportClient.target( WagerServer.BASE_URI );
 
 		jsonObjectMapper = new ObjectMapper();
 
@@ -69,7 +69,7 @@ public class WagerTest
 	{
 		WagerRequest wagerRequest = new WagerRequest( new BigInteger( "30" ), new BigInteger( "10" ) );
 		String wagerRequestJson = jsonObjectMapper.writeValueAsString( wagerRequest );
-		TransportRequest transportRequest = new TransportRequest( "testpartner", "fiver", "testaccount", "testticket", "EUR", wagerRequestJson, new String[] {} );
+		Credentials transportRequest = new Credentials( "testpartner", "fiver", "testaccount", "testticket", "EUR", wagerRequestJson, new String[] {} );
 
 		TransportResponse transportResponse = null;
 		for ( int i = 0; i < 1; i++ )
